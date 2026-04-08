@@ -41,7 +41,6 @@ Agent otomatis akan load skills yang dibutuhkan:
 ✓ coding-standards
 ✓ frontend-patterns
 ✓ frontend-design
-✓ vercel-react-best-practices
 ✓ web-design-guidelines
 ```
 
@@ -136,7 +135,7 @@ Gunakan Nuxt UI Card sebagai base.
 
 ```bash
 @frontend-developer Dashboard page lemot saat render 500+ markets.
-Load skill `vercel-react-best-practices` dan optimize.
+Load skill `frontend-patterns` dan optimize.
 ```
 
 ### Use Case 3: Implement Design
@@ -179,15 +178,14 @@ Agent punya akses ke 10+ skills dari repository Anda:
 ### Core Skills (Auto-loaded)
 
 - **coding-standards** - Universal best practices
-- **frontend-patterns** - React/Vue patterns
+- **frontend-patterns** - Vue/Nuxt patterns
 - **frontend-design** - Design thinking & aesthetics
-- **vercel-react-best-practices** - 57 performance rules
 - **web-design-guidelines** - UI/UX compliance
 
 ### Contextual Skills (On-demand)
 
 - **nuxt-ui** - Nuxt UI components
-- **vercel-composition-patterns** - Advanced React patterns
+- **vercel-composition-patterns** - Advanced composition patterns
 - **building-components** - Component library creation
 - **security-review** - Security best practices
 - **tdd-workflow** - Test-driven development
@@ -282,8 +280,6 @@ ada yang bisa diimprove?
 
 ```bash
 @frontend-developer Dengan Vue 3 Composition API, buat composable useAuth
-# atau
-@frontend-developer Dengan React hooks, buat custom hook useAuth
 ```
 
 ---
@@ -356,7 +352,6 @@ Agent akan ensure:
 - Skills Guide: https://opencode.ai/docs/skills
 - Nuxt 4 Docs: https://nuxt.com/docs
 - Vue 3 Docs: https://vuejs.org/
-- React Docs: https://react.dev/
 
 ---
 
@@ -372,7 +367,7 @@ Mulai dengan command sederhana:
 Agent akan:
 
 1. Scan project files
-2. Load relevant skills (`frontend-patterns`, `vercel-react-best-practices`)
+2. Load relevant skills (`frontend-patterns`)
 3. Analyze components
 4. Provide specific recommendations
 5. Offer to implement improvements
@@ -456,7 +451,7 @@ Atau tanya langsung:
 
 ### Features
 
-- ✅ Framework expertise (Nuxt, React, Vue)
+- ✅ Framework expertise (Nuxt, Vue)
 - ✅ Design thinking & aesthetics
 - ✅ Performance optimization
 - ✅ Accessibility compliance

@@ -107,7 +107,7 @@ Quick reference untuk command dan patterns yang sering dipakai.
 ### Optimization Audit
 
 ```bash
-@frontend-developer Load `vercel-react-best-practices` dan audit:
+@frontend-developer Load `frontend-patterns` dan audit:
 - app/pages/dashboard.vue
 - app/components/MarketList.vue
 
@@ -386,7 +386,7 @@ Cards:
 
 ```bash
 @frontend-developer Create ErrorBoundary component:
-- Catch React errors
+- Catch runtime errors
 - Show user-friendly message
 - Log to error tracking
 - Retry button
@@ -495,7 +495,7 @@ Add console logs dan explain what's happening.
 - Locate large bundles
 - Detect memory leaks
 
-Use React DevTools Profiler approach.
+Gunakan Nuxt DevTools + browser Performance panel approach.
 ```
 
 ---

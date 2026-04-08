@@ -67,8 +67,8 @@ Agent akan otomatis load skills ini saat session dimulai:
    - File organization
 
 2. **`frontend-patterns`**
-   - React/Vue component patterns
-   - Custom hooks patterns
+   - Vue/Nuxt component patterns
+   - Composable patterns
    - State management
    - Performance optimization
    - Form handling
@@ -80,14 +80,7 @@ Agent akan otomatis load skills ini saat session dimulai:
    - Animation patterns
    - Creative implementation
 
-4. **`vercel-react-best-practices`**
-   - 57 performance rules
-   - Bundle optimization
-   - Data fetching patterns
-   - Re-render optimization
-   - Server-side performance
-
-5. **`web-design-guidelines`**
+4. **`web-design-guidelines`**
    - UI/UX compliance
    - Accessibility audit
    - Design best practices
@@ -136,7 +129,7 @@ Agent akan:
 
 Agent akan:
 
-1. Load skill `vercel-react-best-practices`
+1. Load skill `frontend-patterns`
 2. Analisis performance bottlenecks
 3. Suggest virtualization untuk long lists
 4. Implementasi memoization
@@ -213,13 +206,11 @@ Buat komponen Button dengan:
 Gunakan Nuxt UI sebagai base dan pastikan accessible.
 ```
 
-### 2. Spesifikasikan Framework/Library
+### 2. Spesifikasikan Stack Nuxt/Vue
 
-Karena agent support multiple frameworks, sebutkan yang mana:
+Agent ini fokus ke Nuxt/Vue. Sebutkan konteks stack dengan jelas:
 
 ```
-@frontend-developer Buat custom hook useMarketData dengan React
-# atau
 @frontend-developer Buat composable useMarketData dengan Vue 3
 ```
 
@@ -228,7 +219,7 @@ Karena agent support multiple frameworks, sebutkan yang mana:
 Agent akan explain trade-offs dan decisions:
 
 ```
-@frontend-developer Explain kenapa kamu pakai useMemo di sini vs useCallback
+@frontend-developer Explain kenapa kamu pakai computed di sini vs watch
 ```
 
 ### 4. Iterasi Bertahap
@@ -344,7 +335,7 @@ Update approach kamu.
 **Solusi:** Trigger performance review
 
 ```
-@frontend-developer Load `vercel-react-best-practices` and review for performance
+@frontend-developer Load `frontend-patterns` and review for performance
 ```
 
 ---
@@ -377,10 +368,10 @@ Kemudian:
 
 ### Team Collaboration
 
-Share agent config dengan team:
+Share agent config dengan team (tanpa auto-commit oleh agent):
 
 ```bash
-# Commit agent file
+# Commit hanya saat Anda memang meminta commit
 git add .opencode/agents/frontend-developer.md
 git commit -m "Add frontend developer agent config"
 git push
@@ -493,8 +484,7 @@ git commit -m "Update frontend agent: add new skill integration"
 │                                                              │
 │ LOADED SKILLS:                                               │
 │   ✓ coding-standards       ✓ frontend-patterns              │
-│   ✓ frontend-design        ✓ vercel-react-best-practices    │
-│   ✓ web-design-guidelines                                   │
+│   ✓ frontend-design        ✓ web-design-guidelines          │
 │                                                              │
 │ CONTEXTUAL SKILLS:                                           │
 │   • nuxt-ui                • vercel-composition-patterns    │

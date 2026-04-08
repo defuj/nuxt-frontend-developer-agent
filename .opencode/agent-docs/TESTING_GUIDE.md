@@ -70,7 +70,6 @@ ls ~/.agents/skills/ 2>/dev/null || echo "No additional skills"
 # - frontend-patterns
 # - frontend-design
 # - nuxt-ui
-# - vercel-react-best-practices
 # - web-design-guidelines
 ```
 
@@ -447,7 +446,7 @@ Load skills: frontend-patterns, nuxt-ui, coding-standards
 - Target Lighthouse: 90+
 
 Analyze dan implement optimizations.
-Load skill: vercel-react-best-practices
+Load skill: frontend-patterns
 ```
 
 **Expected Actions:**
@@ -718,7 +717,7 @@ ls ~/.opencode/skills/coding-standards/SKILL.md
 
 ### Issue: Wrong framework patterns
 
-**Example:** Agent menggunakan React patterns instead of Nuxt
+**Example:** Agent menggunakan pattern yang tidak sesuai Nuxt/Vue
 
 **Solutions:**
 

@@ -13,6 +13,7 @@ Navigasi lengkap untuk semua dokumentasi Frontend Developer Agent.
 | Workflow lengkap?     | [WORKFLOWS.md](./WORKFLOWS.md)         |
 | MCP integration?      | [MCP_GUIDE.md](./MCP_GUIDE.md)         |
 | Testing agent?        | [TESTING_GUIDE.md](./TESTING_GUIDE.md) |
+| SOP tim?              | [TEAM_OPERATING_GUIDE.md](./TEAM_OPERATING_GUIDE.md) |
 | Overview lengkap?     | [README.md](./README.md)               |
 | Installation summary? | [SUMMARY.md](./SUMMARY.md)             |
 
@@ -21,19 +22,20 @@ Navigasi lengkap untuk semua dokumentasi Frontend Developer Agent.
 ## 📖 Documentation Structure
 
 ```
-.opencode/agents/
-├── frontend-developer.md      # Agent definition (ONLY agent file)
-└── docs/                      # Documentation folder (this directory)
-    ├── README_DOCS.md         # Documentation overview
+.opencode/
+├── agents/
+│   └── frontend-developer.md  # Agent definition
+└── agent-docs/                # Supporting documentation (this directory)
     ├── INDEX.md               # This file - navigation hub
     ├── README.md              # Complete user guide
     ├── QUICK_START.md         # Get started in 5 minutes
-    ├── EXAMPLES.md            # 50+ practical examples
+    ├── EXAMPLES.md            # Practical examples
     ├── API_PATTERNS.md        # useApi composable guide
-    ├── WORKFLOWS.md           # 8 detailed workflows
+    ├── WORKFLOWS.md           # Detailed workflows
     ├── CHEATSHEET.md          # Quick reference
     ├── MCP_GUIDE.md           # MCP integration
     ├── TESTING_GUIDE.md       # Testing & validation
+    ├── TEAM_OPERATING_GUIDE.md# Team operating SOP
     ├── SUMMARY.md             # Installation summary
     └── COMPLETION_REPORT.md   # Project completion
 ```

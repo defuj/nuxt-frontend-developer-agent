@@ -40,7 +40,7 @@ Selamat! Anda telah berhasil menginstall **Frontend Developer Agent** yang lengk
 - Technical skills integration (10+ skills)
 - Memory management system
 - Working methodology & protocols
-- Framework-specific expertise (Nuxt, React, Vue)
+- Framework-specific expertise (Nuxt, Vue)
 - Design & aesthetics philosophy
 - Accessibility commitment (WCAG 2.1)
 - Performance optimization strategies
@@ -197,7 +197,6 @@ Agent terintegrasi dengan **10+ professional skills**:
 - ✅ coding-standards
 - ✅ frontend-patterns
 - ✅ frontend-design
-- ✅ vercel-react-best-practices
 - ✅ web-design-guidelines
 
 **Contextual Skills (On-demand):**
@@ -232,7 +231,6 @@ Agent ensures:
 
 Supports:
 - **Nuxt 4** (primary - current project)
-- **React** with Next.js
 - **Vue 3** Composition API
 - TypeScript strict mode
 - Modern CSS & Tailwind
@@ -427,7 +425,7 @@ Anda sekarang memiliki:
 ✅ **Comprehensive guides** untuk quick reference  
 ✅ **Memory management** untuk smart assistance  
 ✅ **Quality standards** enforcement  
-✅ **Framework expertise** (Nuxt, React, Vue)  
+✅ **Framework expertise** (Nuxt, Vue)  
 
 ---
 

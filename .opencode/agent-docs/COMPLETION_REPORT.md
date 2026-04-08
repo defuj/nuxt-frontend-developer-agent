@@ -65,7 +65,6 @@
 - coding-standards
 - frontend-patterns
 - frontend-design
-- vercel-react-best-practices
 - web-design-guidelines
 
 **On-Demand:**

@@ -566,7 +566,7 @@ export const useCart = () => useCartStore()
 
 **Agent akan:**
 
-1. ✅ Load skill `vercel-react-best-practices` (applicable to Nuxt)
+1. ✅ Load skill `frontend-patterns`
 2. ✅ Analyze bundle dengan `nuxi analyze`
 3. ✅ Implement lazy loading
 4. ✅ Add image optimization

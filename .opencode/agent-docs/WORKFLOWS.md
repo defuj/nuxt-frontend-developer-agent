@@ -101,7 +101,7 @@ Dashboard dengan 500+ items terasa lambat saat scroll dan filter.
 **Step 1: Performance Audit**
 
 ```
-@frontend-developer Load skill `vercel-react-best-practices` dan analyze:
+@frontend-developer Load skill `frontend-patterns` dan analyze:
 
 Files:
 - app/pages/dashboard.vue
@@ -138,8 +138,8 @@ Update app/components/MarketList.vue
 Current issue: Every card re-renders saat user filter/sort
 
 Solutions:
-- Add React.memo (atau Vue equivalent)
-- Stabilize callback props dengan useCallback
+- Isolate expensive subcomponents and pass minimal reactive props
+- Stabilize data flow with computed values and avoid unnecessary watchers
 - Move filter logic to parent
 - Use key prop correctly
 

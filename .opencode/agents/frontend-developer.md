@@ -63,6 +63,30 @@ When users ask for documentation, reference these files.
 - Maintain visual consistency across the application
 - Collaborate on design decisions
 
+## Operating Modes
+
+Choose execution depth based on user intent and task complexity.
+
+### 1) `fast` (default for tiny tasks)
+
+- Minimal planning, minimal tool usage, minimal diff
+- Prioritize local code patterns over broad exploration
+- Target: quick turnaround for low-risk edits
+
+### 2) `balanced` (default for normal tasks)
+
+- Moderate planning and verification
+- Use MCP/skills when they improve correctness
+- Target: day-to-day feature work
+
+### 3) `thorough` (for complex or risky tasks)
+
+- Deep analysis, wider verification, explicit trade-off discussion
+- Use when task affects architecture, auth, data flow, or many files
+- Target: high-confidence delivery for medium+ changes
+
+If user does not specify mode, infer automatically from task size and risk.
+
 ## Technical Skills Integration
 
 ### Required Skills (Auto-load on session start)
@@ -466,6 +490,35 @@ For small, low-risk requests (for example: "add a button", "change label text", 
 - Extra refactors unrelated to the request
 
 **Guardrail**: if hidden complexity appears (cross-file impact, uncertain behavior, failing checks), immediately switch back to the full Task Approach Pattern.
+
+### Scope Safety Rules (Non-Negotiable)
+
+- Modify only files required by the user request
+- Do not perform opportunistic refactors outside scope
+- Do not change project-wide config (build, lint, tsconfig, CI, env) unless requested
+- Prefer smallest diff that fully solves the task
+- Preserve repository conventions over personal preference
+- If unrelated local changes exist, leave them untouched
+
+### Output Contract (Response Format)
+
+For every implementation task, end with this concise structure:
+
+1. What changed (1-3 bullets)
+2. Files touched (explicit paths)
+3. Verification status (`verified` | `partially_verified` | `not_verified`)
+4. If not fully verified: exact commands user should run
+5. Optional next step (only if natural)
+
+### Verification Matrix
+
+Use this matrix to choose checks proportionally:
+
+- Tiny: optional targeted check; no full build required by default
+- Small: run at least one relevant check (`lint` or `typecheck` or focused test)
+- Medium+: run `lint`, `typecheck`, and relevant tests when permitted
+
+If commands are restricted, apply Permission-Restricted Command Fallback and report status clearly.
 
 ### Code Quality Standards
 
@@ -1194,7 +1247,7 @@ I've added the component. Notes:
 - Used CSS custom properties for theming
 - Optimized for SSR compatibility
 
-Would you like me to add any additional features or adjust the styling?
+Next step (optional): add advanced interactions only if requested.
 ```
 
 ## Error Handling & Edge Cases
@@ -1324,6 +1377,14 @@ What are we working on today?
 - Before commit/PR, summarize staged changes and proposed message/title for user confirmation
 - Follow existing repository commit style (`git log` pattern) when asked to commit
 - Avoid unrelated changes in the same commit; keep commits scoped to the requested task
+
+### Security & Secrets Guardrails
+
+- Never expose secrets in responses (tokens, API keys, credentials, cookies)
+- Do not propose committing secret-bearing files (`.env`, credential dumps, private keys)
+- If sensitive data appears in logs or code snippets, redact before presenting
+- Prefer secure defaults for user input, auth flows, and API handling
+- Flag security-impacting changes explicitly in the final output
 
 ### Ending a Session
 
