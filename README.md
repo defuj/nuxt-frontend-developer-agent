@@ -1,0 +1,197 @@
+# Frontend Developer Agent (Nuxt) - Setup Guide
+
+Panduan ini menjelaskan cara menggunakan agent di repo ini, termasuk skill yang perlu diinstall agar agent berjalan optimal.
+
+## Gambaran Singkat
+
+Repo ini berisi konfigurasi OpenCode untuk agent frontend khusus Nuxt/Vue:
+
+- Agent config: `.opencode/config.json`
+- Agent prompt: `.opencode/agents/frontend-developer.md`
+- Dokumentasi internal: `.opencode/agent-docs/`
+
+Agent didesain untuk:
+
+- Nuxt 4 + Nuxt UI
+- Pola Vue Composition API
+- Workflow operasional tim (scope-safe, verification status, commit/PR policy)
+
+## Prasyarat
+
+- OpenCode CLI sudah terpasang
+- Akses ke repository ini
+- Node.js + npm/pnpm/yarn/bun sesuai kebutuhan proyek
+
+## Skill yang Perlu Diinstall
+
+Agar agent berjalan dengan sempurna, install skill berikut.
+
+### Wajib (core)
+
+1. `coding-standards`
+2. `frontend-patterns`
+3. `frontend-design`
+4. `web-design-guidelines`
+
+### Wajib (contextual, untuk kelengkapan workflow)
+
+1. `nuxt-ui`
+2. `vercel-composition-patterns`
+3. `building-components`
+4. `security-review`
+5. `tdd-workflow`
+
+## Lokasi Skill
+
+OpenCode biasanya membaca skill dari:
+
+- `~/.opencode/skills/`
+- `~/.agents/skills/`
+
+Verifikasi cepat:
+
+```bash
+ls ~/.opencode/skills
+ls ~/.agents/skills
+```
+
+Pastikan semua skill di daftar di atas tersedia.
+
+## MCP yang Digunakan Agent
+
+Dari `.opencode/config.json`, agent memakai MCP berikut:
+
+- `nuxt` (enabled)
+- `nuxt-ui` (enabled)
+- `playwright` (enabled)
+- `figma` (disabled by default, opsional)
+
+Jika ingin pakai Figma MCP, set env var:
+
+```bash
+export FIGMA_ACCESS_TOKEN="your-token"
+```
+
+## Cara Pakai
+
+Gunakan agent melalui mention di OpenCode:
+
+```text
+@frontend-developer Tambahkan UButton "Simpan" di app/components/profile/ProfileHeader.vue.
+Task tiny, minimal diff, jangan ubah file lain.
+```
+
+Atau untuk task normal:
+
+```text
+@frontend-developer Implementasikan filter status di halaman markets.
+Gunakan pola useApi yang sudah ada dan laporkan verification status.
+```
+
+## Standar Output Agent
+
+Agent ini dikonfigurasi untuk selalu melaporkan:
+
+- perubahan yang dibuat
+- file yang disentuh
+- status verifikasi: `verified` / `partially_verified` / `not_verified`
+- command manual jika verifikasi penuh tidak bisa dijalankan
+
+## Kebijakan Operasional Penting
+
+- Tidak commit kecuali diminta user
+- Tidak buat PR kecuali diminta user
+- Tidak push kecuali diminta user
+- Tidak menyentuh file di luar scope request
+
+Detail SOP tim ada di: `.opencode/agent-docs/TEAM_OPERATING_GUIDE.md`
+
+## Referensi Cepat
+
+- Quick start: `.opencode/agent-docs/QUICK_START.md`
+- Dokumentasi utama: `.opencode/agent-docs/README.md`
+- Prompt agent: `.opencode/agents/frontend-developer.md`
+
+## Troubleshooting Instalasi Skill
+
+### 1) Skill tidak muncul saat dicek
+
+**Gejala:** nama skill tidak terlihat saat `ls ~/.opencode/skills` atau `ls ~/.agents/skills`.
+
+**Langkah perbaikan:**
+
+1. Pastikan path home benar:
+
+```bash
+echo $HOME
+```
+
+2. Cek dua direktori skill:
+
+```bash
+ls ~/.opencode/skills
+ls ~/.agents/skills
+```
+
+3. Jika belum ada, install/copy skill ke salah satu direktori tersebut.
+
+### 2) Skill ada, tapi agent tidak memakainya
+
+**Gejala:** agent tidak memuat skill yang seharusnya dipakai.
+
+**Langkah perbaikan:**
+
+1. Panggil skill secara eksplisit di prompt:
+
+```text
+@frontend-developer Load skill `nuxt-ui` lalu implementasikan form ini.
+```
+
+2. Mulai session baru OpenCode setelah update skill/konfigurasi.
+3. Pastikan nama skill persis sama dengan folder skill.
+
+### 3) Permission command diblokir
+
+**Gejala:** agent tidak bisa menjalankan command tertentu (test/build/lint).
+
+**Langkah perbaikan:**
+
+1. Cek policy di `.opencode/config.json` pada bagian `agent.frontend.permission`.
+2. Izinkan command yang dibutuhkan (mis. `pnpm *`, `npm *`, atau command spesifik).
+3. Jalankan ulang task; agent akan melaporkan `verification status` sesuai izin yang tersedia.
+
+### 4) MCP tidak tersedia atau gagal dipakai
+
+**Gejala:** lookup Nuxt/Nuxt UI docs tidak berjalan.
+
+**Langkah perbaikan:**
+
+1. Cek `mcp` di `.opencode/config.json` pastikan `enabled: true` untuk `nuxt` dan `nuxt-ui`.
+2. Pastikan koneksi internet aktif (karena MCP Nuxt/Nuxt UI remote).
+3. Untuk Figma MCP, pastikan token terpasang:
+
+```bash
+export FIGMA_ACCESS_TOKEN="your-token"
+```
+
+### 5) Output agent terlalu verbose atau terlalu luas
+
+**Gejala:** perubahan melebar atau penjelasan terlalu panjang.
+
+**Langkah perbaikan:**
+
+Gunakan batasan langsung di prompt:
+
+```text
+Task tiny. Minimal diff. Ubah 1 file ini saja. Jawaban ringkas.
+```
+
+### 6) Konvensi proyek tidak diikuti
+
+**Gejala:** style/pattern yang dipakai tidak sesuai kode existing.
+
+**Langkah perbaikan:**
+
+1. Sebutkan konvensi secara eksplisit di prompt (mis. "gunakan useApi", "jangan ubah naming").
+2. Referensikan file contoh yang harus diikuti.
+3. Minta agent melakukan revisi dengan scope sempit pada file terkait.
