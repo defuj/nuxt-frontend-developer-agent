@@ -9,6 +9,7 @@ Navigasi lengkap untuk semua dokumentasi Frontend Developer Agent.
 | Baru mulai?           | [QUICK_START.md](./QUICK_START.md)     |
 | Butuh contoh?         | [EXAMPLES.md](./EXAMPLES.md)           |
 | API patterns?         | [API_PATTERNS.md](./API_PATTERNS.md)   |
+| Roadmap mentor 30 hari? | [MENTOR_CURRICULUM_30_DAYS.md](./MENTOR_CURRICULUM_30_DAYS.md) |
 | Cari command cepat?   | [CHEATSHEET.md](./CHEATSHEET.md)       |
 | Workflow lengkap?     | [WORKFLOWS.md](./WORKFLOWS.md)         |
 | MCP integration?      | [MCP_GUIDE.md](./MCP_GUIDE.md)         |
@@ -31,6 +32,7 @@ Navigasi lengkap untuk semua dokumentasi Frontend Developer Agent.
     ├── QUICK_START.md         # Get started in 5 minutes
     ├── EXAMPLES.md            # Practical examples
     ├── API_PATTERNS.md        # useApi composable guide
+    ├── MENTOR_CURRICULUM_30_DAYS.md # 30-day beginner curriculum
     ├── WORKFLOWS.md           # Detailed workflows
     ├── CHEATSHEET.md          # Quick reference
     ├── MCP_GUIDE.md           # MCP integration
@@ -441,7 +443,7 @@ Navigasi lengkap untuk semua dokumentasi Frontend Developer Agent.
 
 **Total Documentation:**
 
-- Files: 9
+- Files: 10
 - Total Size: ~115 KB
 - Total Lines: ~5,500+
 - Code Examples: 100+
