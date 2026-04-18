@@ -10,6 +10,8 @@ Navigasi lengkap untuk semua dokumentasi Frontend Developer Agent.
 | Butuh contoh?         | [EXAMPLES.md](./EXAMPLES.md)           |
 | API patterns?         | [API_PATTERNS.md](./API_PATTERNS.md)   |
 | Roadmap mentor 30 hari? | [MENTOR_CURRICULUM_30_DAYS.md](./MENTOR_CURRICULUM_30_DAYS.md) |
+| Checklist harian mentor? | [MENTOR_CURRICULUM_CHECKLIST.md](./MENTOR_CURRICULUM_CHECKLIST.md) |
+| Assignment mingguan mentor? | [MENTOR_WEEKLY_ASSIGNMENTS.md](./MENTOR_WEEKLY_ASSIGNMENTS.md) |
 | Cari command cepat?   | [CHEATSHEET.md](./CHEATSHEET.md)       |
 | Workflow lengkap?     | [WORKFLOWS.md](./WORKFLOWS.md)         |
 | MCP integration?      | [MCP_GUIDE.md](./MCP_GUIDE.md)         |
@@ -33,6 +35,8 @@ Navigasi lengkap untuk semua dokumentasi Frontend Developer Agent.
     ├── EXAMPLES.md            # Practical examples
     ├── API_PATTERNS.md        # useApi composable guide
     ├── MENTOR_CURRICULUM_30_DAYS.md # 30-day beginner curriculum
+    ├── MENTOR_CURRICULUM_CHECKLIST.md # daily execution checklist
+    ├── MENTOR_WEEKLY_ASSIGNMENTS.md # weekly tasks and rubric
     ├── WORKFLOWS.md           # Detailed workflows
     ├── CHEATSHEET.md          # Quick reference
     ├── MCP_GUIDE.md           # MCP integration
@@ -443,7 +447,7 @@ Navigasi lengkap untuk semua dokumentasi Frontend Developer Agent.
 
 **Total Documentation:**
 
-- Files: 10
+- Files: 12
 - Total Size: ~115 KB
 - Total Lines: ~5,500+
 - Code Examples: 100+

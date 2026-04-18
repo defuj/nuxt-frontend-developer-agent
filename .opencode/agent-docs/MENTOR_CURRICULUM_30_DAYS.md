@@ -8,7 +8,13 @@ Roadmap 1 bulan ini dirancang untuk developer yang **sudah bisa coding web dasar
 - **Nuxt UI**
 - **Tailwind CSS**
 
-## Program Format
+Program ini juga dioptimalkan untuk:
+
+- **UI/UX Designer yang terbiasa dengan Figma** dan ingin transisi ke implementasi
+- **Karyawan/profesional teknis** yang membutuhkan struktur belajar mingguan dengan evaluasi progres
+- Sebagian kecil learner bisa berasal dari mahasiswa/alumni IT
+
+## Format Program
 
 - Durasi: **4 minggu**
 - Hari aktif: **5 hari kerja per minggu (Senin-Jumat)**
@@ -16,7 +22,19 @@ Roadmap 1 bulan ini dirancang untuk developer yang **sudah bisa coding web dasar
 - Waktu harian: **90-150 menit**
 - Komposisi: **25% konsep + 75% praktik**
 
-## Target Outcome
+## Jalur Belajar
+
+Gunakan jalur sesuai latar belakang learner:
+
+1. **Track Desainer (Figma -> Code)**
+   - fokus translasi design system ke Nuxt UI + Tailwind
+   - fokus visual QA, state consistency, dan handoff quality
+
+2. **Track Profesional (Karyawan Umum)**
+   - fokus fondasi arsitektur, debugging mindset, dan delivery discipline
+   - fokus tugas mingguan, komunikasi teknis, dan penilaian rubrik
+
+## Target Hasil
 
 Setelah 30 hari, peserta mampu:
 
@@ -37,6 +55,9 @@ Setelah 30 hari, peserta mampu:
 - Praktik: bedah `package.json` scripts (`dev`, `build`, `preview`)
 - Output: catatan alur eksekusi project dari `npm run dev` sampai app running
 
+**Fokus track desainer:** pahami kenapa preview di dev environment bisa berbeda dari static mock Figma.  
+**Fokus track profesional:** pahami lifecycle command dan dependency graph sederhana untuk kebutuhan delivery tim.
+
 ### Hari 2 (Selasa): Nuxt Execution Context (Server vs Client)
 - Materi: SSR context, hydration concept, kapan kode jalan di server/client
 - Praktik: buat contoh aman untuk akses browser API (`localStorage` guard)
@@ -47,6 +68,9 @@ Setelah 30 hari, peserta mampu:
 - Praktik: susun mini structure feature (list + detail)
 - Output: struktur folder feature yang rapi
 
+**Fokus track desainer:** mapping page section Figma ke `pages/` + reusable blocks ke `components/`.  
+**Fokus track profesional:** pahami separation of concerns antara UI, composable, dan API layer.
+
 ### Hari 4 (Kamis): Nuxt Routing + Layout + Middleware Basic
 - Materi: file-based routing, nested route, route middleware basics
 - Praktik: tambah auth-like middleware sederhana (dummy check)
@@ -56,6 +80,8 @@ Setelah 30 hari, peserta mampu:
 - Materi: `useFetch` vs `useAsyncData` vs `$fetch`, kapan pakai masing-masing
 - Praktik: implement 2 halaman data dengan strategi fetching berbeda
 - Output: perbandingan singkat plus keputusan teknik
+
+**Deliverable tambahan:** catatan keputusan kapan pakai `useFetch`, `useAsyncData`, atau wrapper API project.
 
 ---
 
@@ -73,6 +99,8 @@ Setelah 30 hari, peserta mampu:
 - Praktik: buat komponen card reusable + slot action
 - Output: 2-3 komponen reusable dengan contract jelas
 
+**Fokus track desainer:** terjemahkan component variants dari Figma ke props/slots yang skalabel.
+
 ### Hari 8 (Rabu): Composable Design
 - Materi: extract logic dari komponen ke composable
 - Praktik: `useProducts` atau `useMarkets` composable
@@ -82,6 +110,8 @@ Setelah 30 hari, peserta mampu:
 - Materi: typing props, emits, API response, union + narrowing
 - Praktik: tambah tipe pada flow data fetch + form state
 - Output: modul feature typed end-to-end dasar
+
+**Fokus track profesional:** jelaskan error type paling sering dan cara narrowing sederhana untuk mengurangi bug produksi.
 
 ### Hari 10 (Jumat): Weekly Mini Build
 - Materi: integrasi konsep minggu 2
@@ -94,10 +124,14 @@ Setelah 30 hari, peserta mampu:
 
 **Tujuan minggu:** membangun UI yang konsisten, cepat, dan maintainable dengan Nuxt UI + Tailwind.
 
+Minggu ini adalah minggu utama untuk learner dari UI/UX background.
+
 ### Hari 11 (Senin): Nuxt UI Component-First Workflow
 - Materi: mapping kebutuhan UI ke komponen Nuxt UI
 - Praktik: refactor elemen custom ke `UCard`, `UButton`, `UInput`, `UBadge`
 - Output: 1 halaman UI dengan adopsi Nuxt UI dominan
+
+**Deliverable tambahan:** tabel mapping komponen `Figma -> Nuxt UI`.
 
 ### Hari 12 (Selasa): Form Patterns with Nuxt UI
 - Materi: `UForm`, validasi input, error presentation
@@ -109,6 +143,8 @@ Setelah 30 hari, peserta mampu:
 - Praktik: styling halaman dengan utility classes konsisten
 - Output: style guide mini (spacing + typography + color usage)
 
+**Deliverable tambahan:** tabel mapping token `Figma token -> Tailwind utility/theme`.
+
 ### Hari 14 (Kamis): Tailwind Maintainability Patterns
 - Materi: class composition strategy, reusable class pattern, avoiding class chaos
 - Praktik: rapikan class di beberapa komponen nyata
@@ -118,6 +154,8 @@ Setelah 30 hari, peserta mampu:
 - Materi: visual consistency, accessibility quick audit
 - Praktik: audit 1 flow halaman (list -> detail -> submit)
 - Output: daftar perbaikan UI/UX prioritas tinggi
+
+**Deliverable tambahan:** lembar QA visual (state: default/hover/focus/disabled/loading).
 
 ---
 
@@ -150,6 +188,8 @@ Setelah 30 hari, peserta mampu:
 - Praktik: demo mini app + jelaskan keputusan arsitektur
 - Output: mini app + review checklist + backlog improvement
 
+**Mode presentasi tim (opsional):** presentasi 5-7 menit dengan struktur problem, approach, demo, trade-off.
+
 ---
 
 ## Weekly Evaluation Rubric (Skor 1-5)
@@ -161,6 +201,11 @@ Nilai di akhir tiap minggu:
 3. Konsistensi Nuxt UI + Tailwind usage
 4. Kualitas error handling dan state flow
 5. Readiness ke praktik production
+
+Tambahkan dimensi khusus:
+
+6. Translasi design ke code (khusus track desainer)
+7. Kejelasan reasoning teknis saat presentasi (khusus track profesional)
 
 Wajib tulis:
 
@@ -182,12 +227,12 @@ Hari ke-[x]
 - [task implementasi nyata]
 
 3) Review & reflection (10-20 menit)
-- What worked?
-- What broke?
-- What to improve tomorrow?
+- Apa yang berjalan baik?
+- Apa yang bermasalah?
+- Apa yang harus ditingkatkan besok?
 ```
 
-## Setelah 30 Hari (Next Track)
+## Setelah 30 Hari (Track Lanjutan)
 
 Pilih satu jalur lanjutan:
 
@@ -195,6 +240,11 @@ Pilih satu jalur lanjutan:
 2. Implement testing nyata (Vitest + Playwright) untuk 1 flow end-to-end
 3. Dalami Nuxt server/api patterns + auth flow basics
 4. Dalami performance profiling dan deployment readiness checklist
+
+## Dokumen Pendamping
+
+- Checklist harian: `MENTOR_CURRICULUM_CHECKLIST.md`
+- Tugas mingguan + rubrik penilaian: `MENTOR_WEEKLY_ASSIGNMENTS.md`
 
 ---
 
