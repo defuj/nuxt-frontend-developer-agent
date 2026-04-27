@@ -1,26 +1,32 @@
-# Frontend Developer Agent (Nuxt) - Setup Guide
+# IT Team Agent — Setup Guide
 
 Panduan ini menjelaskan cara menggunakan agent di repo ini, termasuk skill yang perlu diinstall agar agent berjalan optimal.
 
 ## Gambaran Singkat
 
-Repo ini berisi konfigurasi OpenCode untuk agent frontend & backend khusus Nuxt/Vue dan Node.js:
+Repo ini berisi konfigurasi OpenCode untuk tim IT lengkap dengan arsitektur **Leader → Subagent**:
 
 - Agent config: `.opencode/config.json`
-- Agent prompts:
-  - `.opencode/agents/nuxt-frontend-developer.md` — Nuxt frontend developer
-  - `.opencode/agents/node-backend-developer.md` — Node.js backend developer
-  - `.opencode/agents/nuxt-frontend-developer-mentor.md` — Nuxt mentor untuk junior/intermediate
+- Agent prompts: `.opencode/agents/`
+  - `it-leader.md` — IT Leader & Technical Project Manager (primary)
+  - `nuxt-frontend-developer.md` — Frontend Developer (Nuxt)
+  - `node-backend-developer.md` — Backend Developer (Node.js)
+  - `ui-ux-designer.md` — UI/UX Designer
+  - `code-reviewer.md` — Code Reviewer / QA
+  - `database-specialist.md` — Database Specialist
+  - `devops-specialist.md` — DevOps / Infrastructure
+  - `seo-specialist.md` — SEO Specialist
+  - `nuxt-frontend-developer-mentor.md` — Nuxt mentor (standalone)
 - Dokumentasi internal: `.opencode/agent-docs/`
   - Frontend Nuxt: `.opencode/agent-docs/frontend/nuxt/`
   - Backend Node: `.opencode/agent-docs/backend/node/`
 - Skill lokal: `.opencode/skills/` (33 skill tersinkron)
 - Contexts: `.opencode/contexts/` (dev, research, review)
 
-Agent didesain untuk:
+Tim didesain untuk:
 
-- Nuxt 4 + Nuxt UI + Vue 3 Composition API + TypeScript
-- Node.js + Express 5 + Prisma + PostgreSQL (backend agent)
+- Nuxt 4 + Nuxt UI + Vue 3 Composition API + TypeScript (frontend)
+- Node.js + Express 5 + Prisma + PostgreSQL (backend)
 - Workflow operasional tim (scope-safe, verification status, commit/PR policy)
 - Mentoring terstruktur 30 hari untuk transisi ke stack Nuxt modern
 
@@ -32,19 +38,24 @@ Agent didesain untuk:
 
 ## Agent yang Tersedia
 
-Repo ini menyediakan 3 agent dengan arsitektur **Leader → Subagent**:
+Repo ini menyediakan 8 agent dengan arsitektur **Leader → Subagent**:
 
 | Agent | File | Mode | Tujuan |
 |-------|------|------|--------|
 | **IT Leader** | `it-leader.md` | **primary** | Analisis requirement, arsitektur, pembagian tugas, delegasi, integrasi |
-| Nuxt Frontend Developer | `nuxt-frontend-developer.md` | subagent | Implementasi frontend (komponen, halaman, composable, E2E) |
-| Node Backend Developer | `node-backend-developer.md` | subagent | Implementasi backend (API, DTO, controller, database, auth) |
+| Frontend Developer | `nuxt-frontend-developer.md` | subagent | Implementasi frontend (komponen, halaman, composable, E2E) |
+| Backend Developer | `node-backend-developer.md` | subagent | Implementasi backend (API, DTO, controller, database, auth) |
+| UI/UX Designer | `ui-ux-designer.md` | subagent | Design system, Figma integration, accessibility, design-to-code handoff |
+| Code Reviewer / QA | `code-reviewer.md` | subagent | Code quality review, security audit, testing strategy, verification |
+| Database Specialist | `database-specialist.md` | subagent | PostgreSQL schema, query optimization, Prisma, migrations |
+| DevOps / Infrastructure | `devops-specialist.md` | subagent | CI/CD, deployment, Docker, monitoring, infrastructure |
+| SEO Specialist | `seo-specialist.md` | subagent | Meta tags, structured data, Core Web Vitals, content optimization |
 
 ### Cara Kerja
 
-1. User memberikan requirement ke **IT Leader** (`@leader`)
+1. User memberikan requirement ke **IT Leader** (primary agent, otomatis aktif)
 2. IT Leader menganalisis, merancang arsitektur, dan memecah menjadi task
-3. IT Leader mendelegasikan task ke subagent yang sesuai (`@frontend` atau `@backend`)
+3. IT Leader mendelegasikan task ke subagent yang sesuai
 4. IT Leader mengintegrasikan hasil dari subagent dan melaporkan ke user
 
 Untuk task kecil yang langsung tahu subagent-nya, bisa langsung mention subagent:
@@ -52,35 +63,33 @@ Untuk task kecil yang langsung tahu subagent-nya, bisa langsung mention subagent
 ```text
 @frontend Tambahkan UButton "Simpan" di ProfileHeader.vue.
 @backend Add endpoint POST /api/markets dengan DTO validation.
+@designer Review UX flow halaman checkout.
+@reviewer Audit security untuk authentication module.
+@database Optimasi query untuk listing markets dengan pagination.
+@devops Setup CI/CD pipeline untuk deployment ke Vercel.
+@seo Implementasi meta tags dan structured data untuk halaman produk.
 ```
 
 ## Skill yang Digunakan Agent
 
 Skill tersimpan di `.opencode/skills/` (lokal dalam repo), jadi developer lain tidak perlu mencari skill satu per satu.
 
-### Skill minimal yang wajib tersedia
+### Skill per Agent
 
-1. `coding-standards`
-2. `frontend-patterns`
-3. `frontend-design`
-4. `web-design-guidelines`
-5. `nuxt-ui`
-6. `security-review`
-7. `tdd-workflow`
+| Agent | Skill Utama |
+|-------|-------------|
+| IT Leader | coding-standards, backend-patterns, frontend-patterns |
+| Frontend Developer | coding-standards, frontend-patterns, frontend-design, web-design-guidelines, nuxt-ui, tdd-workflow |
+| Backend Developer | coding-standards, backend-patterns, postgres-patterns, security-review |
+| UI/UX Designer | frontend-design, web-design-guidelines, building-components, nuxt-ui |
+| Code Reviewer / QA | coding-standards, security-review, tdd-workflow, web-design-guidelines |
+| Database Specialist | postgres-patterns, backend-patterns |
+| DevOps / Infrastructure | backend-patterns, coding-standards |
+| SEO Specialist | frontend-patterns, web-design-guidelines, nuxt-ui |
 
-### Skill tambahan (opsional, tapi direkomendasikan)
+### Skill yang tidak perlu untuk operasional tim ini
 
-1. `building-components` (untuk pembuatan komponen reusable skala besar)
-2. `vercel-composition-patterns` (untuk refactor komponen kompleks)
-
-### Skill backend (untuk node-backend-developer agent)
-
-1. `backend-patterns`
-2. `postgres-patterns`
-
-### Skill yang tidak perlu untuk operasional agent frontend ini
-
-Untuk proyek Nuxt frontend ini, skill backend/lintas bahasa di bawah tidak diperlukan agar agent frontend berjalan optimal:
+Skill backend/lintas bahasa di bawah tidak diperlukan untuk stack Nuxt + Node.js:
 
 - `springboot-*`, `java-*`, `jpa-patterns`
 - `django-*`
@@ -88,7 +97,7 @@ Untuk proyek Nuxt frontend ini, skill backend/lintas bahasa di bawah tidak diper
 - `python-*`
 - `clickhouse-io`
 
-Catatan: skill tersebut boleh tetap disimpan jika tim memang butuh multi-stack, tapi tidak wajib untuk agent frontend ini.
+Catatan: skill tersebut boleh tetap disimpan jika tim memang butuh multi-stack, tapi tidak wajib untuk tim ini.
 
 ### Skill lain yang tersedia di repo
 
@@ -214,12 +223,13 @@ IT Leader adalah **primary agent** — otomatis aktif saat session dimulai. Beri
 ```text
 Buat fitur marketplace dengan halaman listing, detail, dan form create.
 Backend API untuk CRUD markets dengan pagination dan filter.
+Setup CI/CD pipeline dan optimasi SEO.
 ```
 
 IT Leader akan:
 1. Analisis requirement dan definisikan scope
 2. Rancang arsitektur (data flow, API contract, component structure)
-3. Pecah menjadi task dan delegasikan ke `@frontend` / `@backend`
+3. Pecah menjadi task dan delegasikan ke subagent yang sesuai
 4. Integrasikan hasil dan laporkan status
 
 ### Direct Call ke Subagent (untuk task kecil)
@@ -231,17 +241,33 @@ Untuk task kecil yang sudah jelas subagent-nya, bisa langsung mention:
 Task tiny, minimal diff, jangan ubah file lain.
 ```
 
-Atau untuk task normal:
-
 ```text
 @frontend Implementasikan filter status di halaman markets.
 Gunakan pola useApi yang sudah ada dan laporkan verification status.
 ```
 
-Untuk backend:
-
 ```text
 @backend Add endpoint POST /api/markets dengan DTO validation.
+```
+
+```text
+@designer Buat design system untuk halaman produk dengan Nuxt UI.
+```
+
+```text
+@reviewer Audit security untuk authentication module.
+```
+
+```text
+@database Optimasi query untuk listing markets dengan pagination.
+```
+
+```text
+@devops Setup CI/CD pipeline untuk deployment ke Vercel.
+```
+
+```text
+@seo Implementasi meta tags dan structured data untuk halaman produk.
 ```
 
 ## Standar Output Agent
@@ -305,6 +331,11 @@ Dokumentasi agent tersedia di `.opencode/agent-docs/frontend/nuxt/`:
 - Prompt IT Leader (primary): `.opencode/agents/it-leader.md`
 - Prompt frontend subagent: `.opencode/agents/nuxt-frontend-developer.md`
 - Prompt backend subagent: `.opencode/agents/node-backend-developer.md`
+- Prompt designer subagent: `.opencode/agents/ui-ux-designer.md`
+- Prompt reviewer subagent: `.opencode/agents/code-reviewer.md`
+- Prompt database subagent: `.opencode/agents/database-specialist.md`
+- Prompt devops subagent: `.opencode/agents/devops-specialist.md`
+- Prompt seo subagent: `.opencode/agents/seo-specialist.md`
 - Dokumentasi utama: `.opencode/agent-docs/frontend/nuxt/README.md`
 - Quick start: `.opencode/agent-docs/frontend/nuxt/QUICK_START.md`
 - Index dokumentasi: `.opencode/agent-docs/frontend/nuxt/INDEX.md`

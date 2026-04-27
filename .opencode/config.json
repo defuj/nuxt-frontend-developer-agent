@@ -121,6 +121,137 @@
         },
         "mcp": {}
       }
+    },
+    "designer": {
+      "description": "UI/UX Designer specializing in design systems, Figma, accessibility, and design-to-code handoff (subagent of IT Leader)",
+      "mode": "subagent",
+      "prompt": "{file:.opencode/agents/ui-ux-designer.md}",
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "temperature": 0.5,
+      "color": "#f59e0b",
+      "permission": {
+        "edit": "allow",
+        "bash": {
+          "*": "ask",
+          "git status": "allow",
+          "git diff": "allow",
+          "git log*": "allow"
+        },
+        "webfetch": "allow",
+        "skill": {
+          "*": "allow"
+        },
+        "mcp": {
+          "figma": "ask",
+          "nuxt-ui": "allow"
+        }
+      }
+    },
+    "reviewer": {
+      "description": "Code Reviewer & QA Engineer specializing in code quality, security audit, testing strategy, and verification (subagent of IT Leader)",
+      "mode": "subagent",
+      "prompt": "{file:.opencode/agents/code-reviewer.md}",
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "temperature": 0.3,
+      "color": "#ef4444",
+      "permission": {
+        "edit": "allow",
+        "bash": {
+          "*": "ask",
+          "npm *": "allow",
+          "pnpm *": "allow",
+          "bun *": "allow",
+          "yarn *": "allow",
+          "git status": "allow",
+          "git diff": "allow",
+          "git log*": "allow",
+          "npx playwright*": "allow"
+        },
+        "webfetch": "allow",
+        "skill": {
+          "*": "allow"
+        },
+        "mcp": {
+          "playwright": "allow"
+        }
+      }
+    },
+    "database": {
+      "description": "Database Specialist specializing in PostgreSQL schema design, query optimization, Prisma ORM, and migrations (subagent of IT Leader)",
+      "mode": "subagent",
+      "prompt": "{file:.opencode/agents/database-specialist.md}",
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "temperature": 0.3,
+      "color": "#06b6d4",
+      "permission": {
+        "edit": "allow",
+        "bash": {
+          "*": "ask",
+          "npm *": "allow",
+          "pnpm *": "allow",
+          "bun *": "allow",
+          "yarn *": "allow",
+          "git status": "allow",
+          "git diff": "allow",
+          "git log*": "allow"
+        },
+        "webfetch": "allow",
+        "skill": {
+          "*": "allow"
+        },
+        "mcp": {}
+      }
+    },
+    "devops": {
+      "description": "DevOps Engineer specializing in CI/CD, deployment, Docker, monitoring, and infrastructure (subagent of IT Leader)",
+      "mode": "subagent",
+      "prompt": "{file:.opencode/agents/devops-specialist.md}",
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "temperature": 0.3,
+      "color": "#6366f1",
+      "permission": {
+        "edit": "allow",
+        "bash": {
+          "*": "ask",
+          "npm *": "allow",
+          "pnpm *": "allow",
+          "bun *": "allow",
+          "yarn *": "allow",
+          "git status": "allow",
+          "git diff": "allow",
+          "git log*": "allow",
+          "docker *": "allow"
+        },
+        "webfetch": "allow",
+        "skill": {
+          "*": "allow"
+        },
+        "mcp": {}
+      }
+    },
+    "seo": {
+      "description": "SEO Specialist specializing in meta tags, structured data, Core Web Vitals, and content optimization (subagent of IT Leader)",
+      "mode": "subagent",
+      "prompt": "{file:.opencode/agents/seo-specialist.md}",
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "temperature": 0.4,
+      "color": "#84cc16",
+      "permission": {
+        "edit": "allow",
+        "bash": {
+          "*": "ask",
+          "git status": "allow",
+          "git diff": "allow",
+          "git log*": "allow"
+        },
+        "webfetch": "allow",
+        "skill": {
+          "*": "allow"
+        },
+        "mcp": {
+          "nuxt": "allow"
+        }
+      }
     }
   }
 }
