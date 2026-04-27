@@ -70,6 +70,38 @@ Untuk task kecil yang langsung tahu subagent-nya, bisa langsung mention subagent
 @seo Implementasi meta tags dan structured data untuk halaman produk.
 ```
 
+## Model yang Direkomendasikan
+
+Setiap agent bisa pakai model berbeda berdasarkan kompleksitas tugas. Subagent akan **inherit model dari primary** jika tidak diset. Berikut rekomendasi per agent:
+
+| Agent | Tugas | Model Recommended | Model Alternatif | Alasan |
+|-------|-------|-------------------|-----------------|--------|
+| **IT Leader** | Orchestration, arsitektur, planning | `opencode/claude-opus-4.7` | `opencode/claude-opus-4.5` | Butuh reasoning dalam, analisis kompleks, koordinasi multi-subagent |
+| **Frontend** | Implementasi komponen, halaman, logic | `opencode/claude-sonnet-4.5` | `opencode/claude-sonnet-4.6` | Keseimbangan reasoning & efisiensi untuk coding |
+| **Backend** | API, DTO, controller, database ops | `opencode/claude-sonnet-4.5` | `opencode/claude-sonnet-4.6` | Keseimbangan reasoning & efisiensi untuk coding |
+| **Designer** | Design system, eksplorasi visual, handoff | `opencode/claude-sonnet-4` | `openai/gpt-5` | Kreativitas dengan reasoning cukup |
+| **Reviewer** | Security audit, code review detail | `opencode/claude-opus-4.5` | `openai/o3` | Analisis mendalam, deteksi pattern halus |
+| **Database** | Schema design, query optimization | `opencode/claude-sonnet-4.5` | `opencode/claude-sonnet-4` | Kebutuhan reasoning cukup, fokus precision |
+| **DevOps** | CI/CD config, scripts, monitoring | `opencode/claude-haiku-4.5` | `openai/gpt-4.1-mini` | Task lebih straightforward, efisiensi tinggi |
+| **SEO** | Research, meta tags, structured data | `openai/gpt-5.1-codex-mini` | `openai/gpt-5-nano` | Task lebih research-focused, tidak perlu deep coding |
+
+### Tier Model
+
+| Tier | Model | Use Case |
+|------|-------|----------|
+| **Tier 1** (Premium) | `claude-opus-4.7`, `claude-opus-4.5` | Orchestration, deep analysis, security audit |
+| **Tier 2** (Balanced) | `claude-sonnet-4.5/4.6`, `claude-sonnet-4` | Implementasi kompleks, design, database |
+| **Tier 3** (Efficient) | `claude-haiku-4.5`, `gpt-4.1-mini` | Task langsung, scripts, config files |
+| **Tier 4** (Fast) | `gpt-5-nano`, `gpt-5.1-codex-mini` | Research, content, optimasi costs |
+
+### Cara Ganti Model
+
+1. **Untuk semua agent** — set `model` di level primary agent (IT Leader)
+2. **Per agent** — set `model` di config agent masing-masing
+3. **Quick override** — pakai flag `--model` saat run opencode
+
+Lihat `.opencode/config.example.json` untuk contoh konfigurasi lengkap per model.
+
 ## Skill yang Digunakan Agent
 
 Skill tersimpan di `.opencode/skills/` (lokal dalam repo), jadi developer lain tidak perlu mencari skill satu per satu.
@@ -335,7 +367,8 @@ Dokumentasi agent tersedia di `.opencode/agent-docs/frontend/nuxt/`:
 
 ## Referensi Cepat
 
-- Config: `.opencode/config.json`
+- Config aktif: `.opencode/config.json`
+- Config contoh (model per agent): `.opencode/config.example.json`
 - Prompt IT Leader (primary): `.opencode/agents/it-leader.md`
 - Prompt frontend subagent: `.opencode/agents/nuxt-frontend-developer.md`
 - Prompt backend subagent: `.opencode/agents/node-backend-developer.md`
