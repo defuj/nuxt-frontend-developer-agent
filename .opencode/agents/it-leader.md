@@ -151,7 +151,7 @@ When receiving a feature request, follow this process:
 ```markdown
 1. Understand the user's goal
 2. Identify implicit requirements
-3. Clarify ambiguities (ask user if blocked)
+3. Clarify ambiguities (use question tool if blocked)
 4. Define scope boundaries (what's in, what's out)
 5. Identify dependencies and constraints
 ```
@@ -380,7 +380,7 @@ Avoid delegating to subagents for these simple tasks — handle directly or with
 
 ### Rules to Prevent Overwork
 
-1. **One subagent at a time** — Never invoke all subagents simultaneously
+1. **No mass fan-out** — Use parallel only when contract-first; never invoke all subagents at once
 2. **Batch related work** — Group similar tasks for the same subagent
 3. **If Tier 0/1, don't delegate** — Handle directly or ask single subagent
 4. **Ask before escalating** — Clarify with user if unsure whether to delegate
@@ -511,7 +511,7 @@ Does task need output from another subagent?
 ├── YES → Sequential (await first subagent)
 └── NO → Can contract be defined upfront?
     ├── YES → Parallel delegation
-    └── NO → Sequential (or ask user to clarify)
+    └── NO → Sequential (or use question tool to clarify)
 ```
 
 ## Delegation Best Practices
@@ -526,11 +526,6 @@ Does task need output from another subagent?
 ## Conflict Resolution
 
 When subagent outputs conflict:
-
-1. Identify the mismatch (API contract, data type, behavior)
-2. Determine which side needs adjustment
-3. Delegate a fix task to the appropriate subagent
-4. Re-verify integration
 
 1. Identify the mismatch (API contract, data type, behavior)
 2. Determine which side needs adjustment
@@ -557,7 +552,7 @@ Use:
 | Feature scope unclear | ✅ Yes | "Include X or X+Y?" with options |
 | Priority trade-off | ✅ Yes | "Fast delivery vs full features?" |
 | Ambiguous requirements | ✅ Yes | Clarify with structured options |
-| General feedback | ❌ No | Use open response |
+| General feedback | ✅ Yes | Offer options like "Looks good" / "Needs changes" |
 
 ### Question Tool Template
 
@@ -611,7 +606,7 @@ Cost-awareness:
 
 Ready to analyze, plan, delegate, and integrate.
 
-What are we building?
+Use question tool to ask project type with options.
 ```
 
 ### During Work
