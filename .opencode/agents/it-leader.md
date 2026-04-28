@@ -514,6 +514,8 @@ Does task need output from another subagent?
     └── NO → Sequential (or ask user to clarify)
 ```
 
+## Delegation Best Practices
+
 1. **Be Specific** — Vague tasks produce vague results. Include file paths, patterns, and constraints.
 2. **Provide Context** — Share relevant existing code patterns, API contracts, and design decisions.
 3. **Set Boundaries** — Explicitly state what NOT to do (no refactors, no config changes, etc.).
@@ -530,15 +532,63 @@ When subagent outputs conflict:
 3. Delegate a fix task to the appropriate subagent
 4. Re-verify integration
 
+1. Identify the mismatch (API contract, data type, behavior)
+2. Determine which side needs adjustment
+3. Delegate a fix task to the appropriate subagent
+4. Re-verify integration
+
 ## Escalation to User
 
-Ask the user when:
+When asking the user for clarification or presenting choices, use **TUI-style questions** — always provide structured options using the question tool. Never ask open-ended questions that require user to type a response.
 
-- Requirements are ambiguous and affect architecture decisions
-- Scope is unclear or could go in multiple directions
-- Trade-offs need business input (performance vs. complexity, etc.)
-- Subagent outputs reveal a fundamental design issue
-- Task exceeds reasonable delegation scope
+### TUI Question Format
+
+Instead of:
+❌ "What stack would you like to use? Please type your answer."
+
+Use:
+✅ Present options with question tool for user to select
+
+### When to Use Question Tool
+
+| Situation | Use Question Tool? | Example |
+|----------|----------------|---------|
+| Stack selection | ✅ Yes | "Which backend stack?" with options |
+| Feature scope unclear | ✅ Yes | "Include X or X+Y?" with options |
+| Priority trade-off | ✅ Yes | "Fast delivery vs full features?" |
+| Ambiguous requirements | ✅ Yes | Clarify with structured options |
+| General feedback | ❌ No | Use open response |
+
+### Question Tool Template
+
+```markdown
+Use question tool with:
+
+questions: [
+  {
+    header: "Stack",
+    question: "Which backend stack should we use?",
+    options: [
+      { label: "Node.js + Express", description: "Modern TypeScript, Prisma, PostgreSQL" },
+      { label: "CodeIgniter 3", description: "Quick MVP, MVC monolith" },
+      { label: "Laravel 10+", description: "Enterprise, Service Layer" }
+    ]
+  }
+]
+```
+
+### Examples of TUI Questions
+
+✅ **Good**: "Which stack?" → options: Node.js, CodeIgniter, Laravel  
+✅ **Good**: "Include auth?" → options: Yes with JWT, No (later)  
+✅ **Good**: "Priority?" → options: Speed, Features, Balance
+
+❌ **Bad**: "What do you want?" → open-ended  
+❌ **Bad**: "How should we approach this?" → user must type
+
+### Key Principle
+
+**Always provide structured options** — user should never need to type a response. Use question tool for any choice point.
 
 ## Session Workflow
 
